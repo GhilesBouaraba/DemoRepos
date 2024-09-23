@@ -1,0 +1,366 @@
+<WelcomeScreen>:
+    name: "welcomescreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                size: root.width * 0.76, root.height * 0.86
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                radius: [8]
+        Label:
+            text: "Welcome!"
+            font_size: "25sp"
+            pos_hint: {"center_x": 0.5, "center_y": .88}
+        Button:
+            text: "Login"
+            size_hint: .55, .1
+            pos_hint: {"center_x": .5, "center_y": .575}
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            on_press: root.manager.current = 'loginscreen'
+            
+
+        Button:
+            text: "Sign Up"
+            size_hint: .55, .1
+            pos_hint: {"center_x": .5, "center_y": .375}
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            on_press: root.manager.current = 'signup'
+
+<LoginScreen>:
+    name: "loginscreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                size: root.width * 0.76, root.height * 0.86
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                radius: [8]
+        TextInput:
+            id: username_input
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .75}
+            hint_text: "Username"
+            hint_text_colour: (1, 1, 1, 0.5)
+            background_color: (0.3, 0.3, 0.3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+        TextInput:
+            id: password_input
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .55}
+            hint_text: "Password"
+            hint_text_colour: (1, 1, 1, .5)
+            background_color: (.3, .3, .3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+            password: True
+        Button:
+            text: "Submit"
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .375}
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            on_press: root.server_login()
+
+
+<SignUpScreen>:
+    name: "signup"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                size: root.width * 0.76, root.height * 0.86
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                radius: [8]
+        TextInput:
+            id: username_input
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .75}
+            hint_text: "Username"
+            hint_text_colour: (1, 1, 1, 0.5)
+            background_color: (0.3, 0.3, 0.3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+        TextInput:
+            id: password_input
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .55}
+            hint_text: "Password"
+            hint_text_colour: (1, 1, 1, .5)
+            background_color: (.3, .3, .3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+            password: True
+        Button:
+            text: "Submit"
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .375}
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            on_press: root.create_account()
+            
+<HomeScreen>:
+    name: "homescreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
+        Button:
+            text: "Manage Decks"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .5}
+            on_press: root.manager.current = 'deckoptionscreen'
+        Button:
+            size_hint: .15, .1
+            pos_hint: {"center_x": .2, "center_y": .87}
+            background_normal: 'back-button.png'
+            background_down: ''
+            on_press: root.manager.current = 'welcomescreen'
+            
+            
+
+            
+
+<DeckOptionScreen>:
+    name: "deckoptionscreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
+        Button:
+            text: "Create new deck"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .6}
+            on_press: root.manager.current = 'decktypescreen'
+
+        Button:
+            text: "Edit decks"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .4}
+            on_press: root.manager.current = 'editdeckscreen'
+        Button:
+            size_hint: .15, .1
+            pos_hint: {"center_x": .2, "center_y": .87}
+            background_normal: 'back-button.png'
+            background_down: ''
+            on_press: root.manager.current = 'homescreen'
+
+<DeckTypeScreen>:
+    name: "decktypescreen"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
+        Button:
+            text: "Automatic Deck"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .6}
+            on_press: root.manager.current = 'automaticcreationscreen'
+            
+        Button:
+            text: "Manual Deck"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .4}
+            on_press: root.manager.current = 'manualcreationscreen'
+        Button:
+            size_hint: .15, .1
+            pos_hint: {"center_x": .2, "center_y": .87}
+            background_normal: 'back-button.png'
+            background_down: ''
+            on_press: root.manager.current = 'deckoptionscreen'
+
+
+
+<ManualCreationScreen>
+    name: 'manualcreationscreen'
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
+        TextInput:
+            id: manual_deck_name
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .75}
+            hint_text: "Deck Name"
+            hint_text_colour: (1, 1, 1, 0.5)
+            background_color: (0.3, 0.3, 0.3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+        TextInput:
+            id: manual_language
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .5}
+            hint_text: "Language"
+            hint_text_colour: (1, 1, 1, 0.5)
+            background_color: (0.3, 0.3, 0.3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+        Button:
+            text: "Submit"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .3}
+            on_press: root.add_manual_deck_to_database()
+        Button:
+            size_hint: .15, .1
+            pos_hint: {"center_x": .2, "center_y": .87}
+            background_normal: 'back-button.png'
+            background_down: ''
+            on_press: root.manager.current = 'decktypescreen'
+        
+<AutomaticCreationScreen>:
+    name: 'automaticcreationscreen'
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
+        TextInput:
+            id: automatic_deck_name
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .75}
+            hint_text: "Deck Name"
+            hint_text_colour: (1, 1, 1, 0.5)
+            background_color: (0.3, 0.3, 0.3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+        TextInput:
+            id: automatic_language
+            size_hint: .45, .07
+            pos_hint: {"center_x": .5, "center_y": .5}
+            hint_text: "Language"
+            hint_text_colour: (1, 1, 1, 0.5)
+            background_color: (0.3, 0.3, 0.3, 1)
+            foreground_color: (1, 1, 1, 1)
+            padding: [10, 5]
+        Button:
+            text: "Submit"
+            size_hint: .45, .07
+            background_normal: ''
+            background_color: .11, .36, .69, 1
+            pos_hint: {"center_x": .5, "center_y": .3}
+            on_press: root.add_automatic_deck_to_database()
+        Button:
+            size_hint: .15, .1
+            pos_hint: {"center_x": .2, "center_y": .87}
+            background_normal: 'back-button.png'
+            background_down: ''
+            on_press: root.manager.current = 'decktypescreen'
+
+<EditDeckScreen>
+    name: 'editdeckscreen'
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
+        Button:
+            size_hint: .15, .1
+            pos_hint: {"center_x": .2, "center_y": .87}
+            background_normal: 'back-button.png'
+            background_down: ''
+            on_press: root.manager.current = 'decktypescreen'
+        BoxLayout:
+            id: deck_buttons_box
+            orientation: 'vertical'
+            size_hint: .76, .7
+            pos_hint: {"center_x": .5, "center_y": .5}
+    
+<EditingScreen>:
+    name: 'editdeckscreen'
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.1, 0.1, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            Color:
+                rgba: 0.15, 0.15, 0.15, 1
+            RoundedRectangle:
+                pos: ((root.width - (root.width * 0.76)) / 2), ((root.height - (root.height * 0.86)) / 2)
+                size: root.width * 0.76, root.height * 0.86
+                radius: [8]
